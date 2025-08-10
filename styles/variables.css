@@ -1,1 +1,21 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  /* Цвета */
+  --color-primary: #F4F4FF;
+  --color-secondary: #E4E4F9;
+  --color-accent: #5353C6;
+  --color-text: #1A1A2E;
+  --color-border: #000000;
+  --color-like: #FF5A79;
+  --color-white: #FFFFFF;
+
+  /* Размеры */
+  --max-width: 700px;
+  --header-height: 60px;
+
+  /* Тени */
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  --background-image: url("../images/background.png");
+}
