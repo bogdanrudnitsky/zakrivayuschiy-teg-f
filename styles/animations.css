@@ -1,45 +1,65 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
-/* Heart beat animation */
-.like-animation-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-
-.like-animation-container .like-frame-1 {
+/* Базовые состояния */
+.core {
+  stroke-width: 0px;
   opacity: 1;
 }
 
-.card__icon-button:hover .like-frame-1 { animation: frameFade 0s steps(1) 0s forwards; }
-.card__icon-button:hover .like-hover-1 { animation: frameFade 0.1s steps(1) 0.1s forwards; }
-.card__icon-button:hover .like-hover-2 { animation: frameStop 0.2s steps(1) 0.2s forwards; }
-
-.is-liked .like-frame-1 { animation: frameFade 0.6s steps(1) 0s forwards; }
-.is-liked .like-frame-2 { animation: frameFade 0.6s steps(1) 0.1s forwards; }
-.is-liked .like-frame-3 { animation: frameFade 0.6s steps(1) 0.2s forwards; }
-.is-liked .like-frame-4 { animation: frameFade 0.6s steps(1) 0.3s forwards; }
-.is-liked .like-frame-5 { animation: frameFade 0.6s steps(1) 0.4s forwards; }
-.is-liked .like-frame-6 { animation: frameStop 0.6s steps(1) 0.5s forwards; }
-
-
-@keyframes frameFade {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+.main-body {
+  stroke-width: 0px;
+  opacity: 1;
 }
 
-@keyframes frameStop {
-  0% { opacity: 1; }
-  100% { opacity: 1; }
+.contour {
+  stroke-width: 0px;
+  opacity: 1;
+}
+
+.sparks {
+  stroke-width: 0px;
+  opacity: 1;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+/* Анимация при наведении */
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:hover .contour {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+/* Анимация при активации (лайк) */
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.6s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.1s linear 0.06s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-opacity 0.3s ease-in 0.3s 1 alternate;
+}
+
+@keyframes sparks-opacity {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
