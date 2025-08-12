@@ -1,65 +1,88 @@
 /* Базовые состояния */
 .core {
-  stroke-width: 0px;
-  opacity: 1;
+  fill: var(--contour-color);
+  stroke-width: 0;
+  opacity: 1; /* Всегда видим */
+  transition:
+    fill 0.3s linear 0.03s,
+    stroke 0.3s linear 0.03s;
 }
 
 .main-body {
-  stroke-width: 0px;
+  fill: transparent;
+  stroke-width: 0;
   opacity: 1;
+  transition:
+    fill 0.3s linear,
+    stroke 0.3s linear;
 }
 
 .contour {
-  stroke-width: 0px;
+  fill: transparent;
+  stroke-width: 0;
   opacity: 1;
+  transition:
+    fill 0.1s linear,
+    stroke 0.1s linear;
 }
 
 .sparks {
-  stroke-width: 0px;
-  opacity: 1;
-}
-
-.like-icon .sparks {
+  fill: var(--animation-fill-color);
+  stroke: none;
   opacity: 0;
 }
 
-/* Анимация при наведении */
-.like-icon:hover .core {
-  fill: var(--contour-color);
-  transition: fill 0.1s linear;
-}
-
+/* Состояние при наведении */
 .like-icon:hover .main-body {
   fill: var(--contour-color);
-  transition: fill 0.3s linear 0.05s;
+  stroke: var(--contour-color);
+  transition:
+    fill 0.3s linear 0.05s,
+    stroke 0.3s linear 0.05s;
 }
 
 .like-icon:hover .contour {
   fill: var(--contour-color);
-  transition: fill 0.3s linear;
+  stroke: var(--contour-color);
+  transition:
+    fill 0.3s linear,
+    stroke 0.3s linear;
 }
 
-/* Анимация при активации (лайк) */
+/* Состояние при активации (лайк) */
 .like-icon.is-liked .core {
   fill: var(--animation-fill-color);
-  transition: fill 0.6s linear;
+  stroke: var(--animation-fill-color);
+  transition:
+    fill 0.3s linear,
+    stroke 0.3s linear;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--animation-fill-color);
-  transition: fill 0.3s linear 0.05s;
+  stroke: var(--animation-fill-color);
+  transition:
+    fill 0.3s linear 0.05s,
+    stroke 0.3s linear 0.05s;
 }
 
 .like-icon.is-liked .contour {
   fill: var(--animation-fill-color);
-  transition: fill 0.1s linear 0.06s;
+  stroke: var(--animation-fill-color);
+  transition:
+    fill 0.3s linear 0.06s,
+    stroke 0.3s linear 0.06s;
 }
 
 .like-icon.is-liked .sparks {
-  animation: sparks-opacity 0.3s ease-in 0.3s 1 alternate;
+  animation: sparks-opacity 0.3s ease-in 0.3s;
 }
 
 @keyframes sparks-opacity {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
