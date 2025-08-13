@@ -126,6 +126,8 @@
 }
 
 .card-image {
+  position: relative;  /* Теперь .card-logo будет позиционироваться относительно этого блока */
+  display: inline-block; /* Или другой подходящий вариант (block/flex) */
   width: 100%;
   max-height: 696px;
   border-top: 2px solid var(--color-border);
@@ -143,7 +145,12 @@
 }
 
 .card-logo {
-
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 98px;
+  height: 14px;
+  z-index: 2;
 }
 
 /* Стили для основного текста карточки */
@@ -173,14 +180,14 @@
   stroke: var(--color-text);
   stroke-width: 2px;
   transition: all 0.3s;
-  margin-right: 12px;
+  margin-right: 6px;
   background: transparent;
   border: none;
   padding: 0;
 }
 
 .card__like-button {
-  width: 118px;
+  width: 130px;
   height: 38px;
 }
 
@@ -206,10 +213,7 @@
 
 .save-btn {
   height: 55px;
-  width: calc(306px + (355 - 306) * (100vw - 355px) / (700 - 375) - 2px);
-  max-width: 355px;
-  min-width: 306px;
-  padding: 12px;
+  padding: 17px 20px;
   border: 2px solid var(--color-border);
 
   display: flex;
