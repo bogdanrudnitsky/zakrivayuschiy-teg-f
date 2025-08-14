@@ -16,6 +16,8 @@
   /* Размеры */
   --max-width: 700px;
   --header-height: 60px;
+  --font-weight-title: 715;
+  --font-weight-text: 410;
 
   /* Тени */
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
