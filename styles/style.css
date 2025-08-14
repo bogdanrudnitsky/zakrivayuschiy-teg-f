@@ -18,12 +18,13 @@
   font-family: 'PressStart2P', sans-serif;
   font-size: 14px;
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .button::before {
   content: "";
   position: absolute;
-  top: -100%;
+  top: -15%;
   left: -100%;
   width: 100%;
   height: 100%;
@@ -36,7 +37,6 @@
 .button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 var(--color-border);
-  transition: box-shadow 0.3s ease;
 }
 
 .button::after {
@@ -57,9 +57,16 @@
 }
 
 .button__text {
-  mix-blend-mode: difference;
-  transition: color 0.3s ease;
+  color: var(--color-black); /* Начальный цвет текста - черный */
+  transition: color 500ms ease; /* Плавное изменение цвета текста */
+  position: relative;
+  z-index: 2; /* Поднимаем текст над псевдоэлементами */
+}
+
+.button:hover .button__text,
+.button:hover .save-icon {
   color: var(--color-white);
+  fill: var(--color-white);
 }
 
 /* Header */
@@ -110,6 +117,7 @@
   font-family: 'Inter', sans-serif;
   font-variation-settings: 'wght' var(--font-weight-title);
   font-style: normal;
+  mix-blend-mode: hard-light;
   font-size: 1.125rem;
   line-height: 1;
   letter-spacing: 0;
@@ -156,11 +164,15 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  width: 98px;
-  height: 14px;
   z-index: 2;
 }
 
+@supports (-webkit-text-stroke: 1px var(--color-white)) {
+  .card-logo {
+    -webkit-text-stroke: 1px var(--color-white);
+    text-shadow: none;
+  }
+}
 
 .card-description {
   font-family: 'Inter', sans-serif;
@@ -236,6 +248,7 @@
 .save-icon {
   max-width: 21px;
   margin-right: 8px;
+  mix-blend-mode: difference;
 }
 
 
@@ -296,7 +309,6 @@
   font-family: 'PressStart2P', sans-serif;
   font-size: 14px;
   cursor: pointer;
-  transition: transform 0.1s ease;
   margin-top: 30px;
   color: #000000;
 }
