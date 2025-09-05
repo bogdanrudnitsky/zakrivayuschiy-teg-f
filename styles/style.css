@@ -29,7 +29,7 @@
   width: 100%;
   height: 100%;
   background: var(--color-border);
-  transition: left 500ms ease, top 500ms ease;
+  transition: left 500ms ease, top 500ms;
   z-index: -1;
 }
 
@@ -57,16 +57,11 @@
 }
 
 .button__text {
-  color: var(--color-border); /* Начальный цвет текста - черный */
-  transition: color 500ms ease; /* Плавное изменение цвета текста */
-  position: relative;
-  z-index: 2; /* Поднимаем текст над псевдоэлементами */
-}
-
-.button:hover .button__text,
-.button:hover .save-icon {
   color: var(--color-white);
-  fill: var(--color-white);
+  mix-blend-mode: difference;
+  transition: color 500ms ease;
+  position: relative;
+  z-index: 2;
 }
 
 /* Header */
@@ -250,9 +245,8 @@
   margin-right: 8px;
   mix-blend-mode: difference;
   transition: fill 500ms ease;
-  fill: var(--color-border);
+  fill: var(--color-white);
 }
-
 
 
 /* Всплывающее окно */
